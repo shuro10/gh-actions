@@ -1,0 +1,11 @@
+name: Hello
+on: [push]
+jobs: # jobは複数のstepを持つ
+  hello: # jobID単位でrunnerを指定でき、並列実行も可能
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository　　# nameは省略可能だが、実行ログがわかりずらい
+        uses: actions/checkout@v4 # 現在のリポジトリをrunner上にコピー（クローン）
+
+      - name: Say Hello
+        run: echo Hello, world!
