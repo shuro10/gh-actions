@@ -2,10 +2,12 @@ name: Hello
 on: [push]
 jobs: # jobは複数のstepを持つ
   hello: # jobID単位でrunnerを指定でき、並列実行も可能
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository　　# nameは省略可能だが、実行ログがわかりずらい
-        uses: actions/checkout@v4 # 現在のリポジトリをrunner上にコピー（クローン）
+    runs-on: ubuntu-latest # 実行環境のprovisioning
+    steps: # 処理の最小単位
+      - name: Checkout repository　　# nameは省略可能だが、実行ログがわかりづらい
+        uses: actions/checkout@v4 # 現在のリポジトリをrunner上にコピー（クローン）  # actionの使用(uses key)は、GitHub Actionsが提供するmoduleを利用できる(典型処理は実装せずに済む)
+        # with: # with keyでactionの引数を指定できる
+        #   ref: main # ブランチ指定
 
       - name: Say Hello
-        run: echo Hello, world!
+        run: echo Hello, world! # shellコマンドを実行
