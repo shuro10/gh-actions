@@ -11,4 +11,4 @@ jobs: # jobは複数のstepを持つ
   run:
     runs-on: ubuntu-latest # 実行環境のprovisioning
     steps: # 処理の最小単位
-      - run echo "${{inputs.greeting}}" # ユーザー入力を利用してshellコマンドを実行
+      - run: echo "${{ inputs.greeting }}" # ユーザー入力を利用してshellコマンドを実行
