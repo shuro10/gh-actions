@@ -1,0 +1,15 @@
+name: Manual
+on:
+  workflow_dispatch: # マニュアルトリガーを設定
+
+  inputs
+    greeting: # ユーザー入力を受け付ける
+      type: string
+      default: 'Hello, world!'
+      required: true
+      description: 'Greeting message'
+jobs: # jobは複数のstepを持つ
+  run:
+    runs-on: ubuntu-latest # 実行環境のprovisioning
+    steps: # 処理の最小単位
+      - run echo "${{inputs.greeting}}" # ユーザー入力を利用してshellコマンドを実行
